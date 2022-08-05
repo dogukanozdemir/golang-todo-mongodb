@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	controller "github.com/dogukanozdemir/go-todo-mongo/controllers"
 
@@ -33,6 +34,6 @@ func main() {
 	router.POST("/login", controller.Login)
 	router.GET("/todo", controller.Todo)
 
-	router.Run(":8080")
+	router.Run(os.Getenv("PORT"))
 
 }
