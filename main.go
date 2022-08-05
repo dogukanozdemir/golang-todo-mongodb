@@ -34,6 +34,6 @@ func main() {
 	router.POST("/login", controller.Login)
 	router.GET("/todo", controller.Todo)
 
-	router.Run(os.Getenv("PORT"))
+	router.Run(":" + os.Getenv("PORT"))
 
 }
