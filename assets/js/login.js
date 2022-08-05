@@ -1,7 +1,4 @@
 
-var cookieArr = document.cookie
-console.log(cookieArr)
-
 login = document.getElementById("loginbtn");
 signup = document.getElementById("signupbtn");
 login.addEventListener("click", () => {

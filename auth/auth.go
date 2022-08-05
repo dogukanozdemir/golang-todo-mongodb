@@ -15,7 +15,6 @@ type Claims struct {
 }
 var SECRET_KEY string = os.Getenv("SECRET_KEY")
 
-
 func ValidateSession(c * gin.Context) (bool){
 	cookie, err := c.Cookie("token")
 	if err != nil {

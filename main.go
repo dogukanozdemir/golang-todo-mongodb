@@ -15,12 +15,10 @@ func index(c *gin.Context) {
 
 func main() {
 
-
 	router := gin.Default()
 	router.LoadHTMLGlob("assets/*.html")
 	router.Static("/assets", "./assets")
 
-	// todo
 	router.GET("/", index)
 	router.GET("/todos/:userid", controller.GetTodos)
 	router.GET("/todo/:id", controller.GetTodo)
@@ -29,7 +27,7 @@ func main() {
 	router.DELETE("/todos/:userid", controller.ClearAll)
 	router.PUT("/todo", controller.UpdateTodo)
 
-	// user
+
 	router.POST("/signup", controller.SignUp)
 	router.POST("/login", controller.Login)
 	router.GET("/todo", controller.Todo)

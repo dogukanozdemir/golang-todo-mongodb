@@ -23,13 +23,13 @@ var userCollection *mongo.Collection = database.OpenCollection(database.Client, 
 
 
 func SignUp(c * gin.Context){
-	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
-
+	
 	var user models.User
 	if err := c.BindJSON(&user); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
 	emailCount, err := userCollection.CountDocuments(ctx, bson.M{"email": user.Email})
 	defer cancel()
@@ -85,14 +85,14 @@ func SignUp(c * gin.Context){
 
 }
 func Login(c * gin.Context){
-	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 	var user models.User
 	var foundUser models.User
-
+	
 	if err := c.BindJSON(&user); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "bind error"})
 		return
 	}
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
 	err := userCollection.FindOne(ctx, bson.M{"email": user.Email}).Decode(&foundUser)
 	defer cancel()
@@ -130,7 +130,6 @@ func Login(c * gin.Context){
 			return
 		}
 
-		fmt.Printf("refreshed token: %s\n", token)
 		http.SetCookie(c.Writer, &http.Cookie{
 			Name:    "token",
 			Value:   token,
@@ -147,7 +146,7 @@ func Login(c * gin.Context){
 			Value : username,
 			Expires: expirationTime,
 		})
-		fmt.Print(expirationTime)
+		
 	} else {
 		http.SetCookie(c.Writer, &http.Cookie{
 			Name : "userID",
@@ -160,11 +159,6 @@ func Login(c * gin.Context){
 			Expires: expirationTime,
 		})
 	}
-
-
-
-
-
 	c.JSON(http.StatusOK, gin.H{"msg": "login successful"})
 }
 
