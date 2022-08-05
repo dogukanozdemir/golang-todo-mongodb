@@ -46,7 +46,7 @@ func ValidateSession(c * gin.Context) (bool){
 func GenerateJWT(userid string) (string ,error, time.Time) {
 	// Declare the expiration time of the token
 	// here, we have kept it as 5 minutes
-	expirationTime := time.Now().Add(10 * time.Second)
+	expirationTime := time.Now().Add(5 * time.Minute)
 	// Create the JWT claims, which includes the username and expiry time
 	claims := &Claims{
 		Username: userid,
