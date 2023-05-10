@@ -1,9 +1,7 @@
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 # Todo app API with JWT Authentication and MongoDB
 
-This is a simple yet powerful app written in GoLang to showcase the uses of JWT Authentication and MongoDB There is a login/signup feature and a todo list feature. Every user and todo is stored in a MongoDB collection. Every session is secured and managed by JWT Authentication. The passwords are hashed and stored in MongoDB in a industry standard way. The app is deployed on Heroku and is accessible from the link below. 
-
-https://go-jwt-todo-mongo.herokuapp.com/
+This is a simple yet powerful app written in GoLang to showcase the uses of JWT Authentication and MongoDB There is a login/signup feature and a todo list feature. Every user and todo is stored in a MongoDB collection. Every session is secured and managed by JWT Authentication. The passwords are hashed and stored in MongoDB in a industry standard way.
 
 # What is JWT Authentication?
 ![Rest API and MDB](https://jwt.io/img/logo-asset.svg)
